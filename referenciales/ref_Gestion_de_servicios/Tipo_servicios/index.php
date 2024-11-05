@@ -8,7 +8,7 @@ date_default_timezone_set("America/Asuncion");
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Referenciales | formas cobro</title>
+    <title>Referenciales | Tipo de servicios</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -28,7 +28,7 @@ date_default_timezone_set("America/Asuncion");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formas de cobro</h2>
+                            <h2>Tipo de servicios</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -36,90 +36,21 @@ date_default_timezone_set("America/Asuncion");
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="client_cod" value=""
+                                            <input type="text" id="tipo_serv_cod" value=""
                                                 class="form-control" disabled>
-                                            <label class="form-label">Credito</label>
+                                            <label class="form-label">Codigo</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="datetime" id="client_fecha_in" value="<?= date('d/m/Y h:m:s') ?>" class="form-control" disabled>
-                                            <label class="form-label">Fecha</label>
+                                            <input type="datetime" id="tipo_serv_descr" value=""
+                                                class="form-control" disabled>
+                                            <label class="form-label">Descripcion</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                                <input type="text" id="client_nombre" class="form-control editable" disabled>
-                                                <label class="form-label">Cliente Nombre</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                                <input type="text" id="client_apellido" class="form-control editable" disabled>
-                                                <label class="form-label">Cliente Apellido</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_doc_ident" class="form-control editable" disabled>
-                                            <label class="form-label">Ruc/CI</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_telf"
-                                                class="form-control editable" disabled>
-                                            <label class="form-label">Telefono</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_email"
-                                                class="form-control editable" disabled>
-                                            <label class="form-label">E-mail</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_direc"
-                                                class="form-control editable" disabled>
-                                            <label class="form-label">Direccion</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_obs"
-                                                class="form-control editable" disabled>
-                                            <label class="form-label">Observación</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" id="client_estado" class="form-control" disabled>
-                                            <label class="form-label">Estado</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
                             </div>
                             <div class="button-demo text-center">
                                     <button type="button" class="btn btn-success waves-effect btnOperacion1" onclick="agregar();">AGREGAR</button>
@@ -134,7 +65,7 @@ date_default_timezone_set("America/Asuncion");
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Formas de cobros <small>Lista de Clientes Registrados</small>
+                                Tipo de servicios <small>Lista de tipo de servicios Registrados</small>
                             </h2>
                         </div>
                         <div class="body">
@@ -142,12 +73,8 @@ date_default_timezone_set("America/Asuncion");
                                 <table class="table table-hover table-bordered table-striped dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Cliente Nombre</th>
-                                            <th>Cliente Apellido</th>
-                                            <th>Ruc</th>
-                                            <th>Telefono</th>
-                                            <th>Estado</th>
+                                            <th>codigo</th>
+                                            <th>Descripcion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="grilla_datos">

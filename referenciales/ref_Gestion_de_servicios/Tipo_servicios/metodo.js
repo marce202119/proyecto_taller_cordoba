@@ -2,7 +2,7 @@ listar();
 
 function agregar(){
     $("#operacion").val(1);
-    $("#client_cod").val(0);
+    $("#tipo_serv_cod").val(0);
     $(".editable").removeAttr("disabled");
     habilitarBotones(false);
     $(".form-line").attr("class","form-line focused");
@@ -41,16 +41,16 @@ function habilitarBotones(operacion1){
 function confirmarOperacion(){
 
     var operacion = $("#operacion").val();
-    var pregunta = "¿Desea grabar el nuevo registro?";
+    var pregunta = "¿Desea grabar el nuevo tipo de servicio?";
     var titulo = "Alta!";
 
     if(operacion == 2){
-        pregunta = "¿Desea modificar el registro seleccionado?";
+        pregunta = "¿Desea modificar el tipo de servicio seleccionado?";
         titulo = "Modificacion!!!";
     }
 
     if(operacion == 3){
-        pregunta = "¿Desea eliminar el registro seleccionado?";
+        pregunta = "¿Desea eliminar el tipo de servicio seleccionado?";
         titulo = "Eliminar!!!";
     }
 
@@ -73,15 +73,8 @@ function grabar(){
         method:"POST",
         url:"controlador.php",
         data:{
-            client_cod:$("#client_cod").val(),
-            client_nombre:$("#client_nombre").val(),
-            client_apellido:$("#client_apellido").val(),
-            client_doc_ident:$("#client_doc_ident").val(),
-            client_direc:$("#client_direc").val(),
-            client_telf:$("#client_telf").val(),
-            client_email:$("#client_email").val(),
-            client_fecha_in:$("#client_fecha_in").val(),
-            client_obs:$("#client_obs").val(),
+            tipo_serv_cod:$("#tipo_serv_cod").val(),
+            tipo_serv_descr:$("#tipo_serv_descr").val(),
             operacion:$("#operacion").val()
         }
     }).done(function(respuesta){
@@ -93,7 +86,7 @@ function grabar(){
         },
         function(){
             if(respuesta.tipo=="success"){
-                $("#client_cod").val(respuesta.ultcod);
+                $("#tipo_serv_cod").val(respuesta.ultcod);
                 location.reload(true);
             }
         });
@@ -113,23 +106,12 @@ function listar(){
         for(rs of resultado){
             lineas += "<tr onclick='seleccion("+JSON.stringify(rs)+")'>"
                 lineas += "<td>";
-                    lineas += rs.client_cod;
+                    lineas += rs.tipo_serv_cod;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.client_nombre;
+                    lineas += rs.tipo_serv_descr;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.client_apellido;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rs.client_doc_ident;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rs.client_telf;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rs.client_estado;
-                lineas += "</td>";
             lineas += "</tr>"
         }
         $("#grilla_datos").html(lineas);
