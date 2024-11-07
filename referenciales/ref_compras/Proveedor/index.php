@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -64,7 +66,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="provee_fecha_inc" class="form-control editable" disabled>
+                                            <input type="date" id="provee_fecha_inc" class="form-control editable" disabled>
                                             <label class="form-label">fecha incorporacion</label>
                                         </div>
                                     </div>
@@ -72,7 +74,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="email" id="email" class="form-control editable" disabled>
+                                            <input type="email" id="provee_email" class="form-control editable" disabled>
                                             <label class="form-label">Email</label>
                                         </div>
                                     </div>
@@ -80,11 +82,41 @@
                                 <div class="col-md-4">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="telefono" class="form-control editable" disabled>
+                                            <input type="text" id="provee_telef" class="form-control editable" disabled>
                                             <label class="form-label">Teléfono</label>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="hidden" id="timb_cod" value="0">
+                                            <input type="text" id="timbrado" class="form-control editable" onclick="getTimbrado()">
+                                            <label class="form-label">Timbrado</label>
+                                            <div id="listaTimbra" style="display: none;">
+                                                <ul class="list-group" id="ulTimbra">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="hidden" id="tip_prov_cod" value="0">
+                                            <input type="text" id="tipoproveedor" class="form-control editable" onclick="getTipProvee()">
+                                            <label class="form-label">Tipo Proveedor</label>
+                                            <div id="listaTipProvee" style="display: none;">
+                                                <ul class="list-group" id="ulTipProvee">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="button-demo text-center">
                                 <button type="button" class="btn btn-success waves-effect btnOperacion1" onclick="agregar();">AGREGAR</button>

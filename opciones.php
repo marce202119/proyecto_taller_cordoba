@@ -254,27 +254,28 @@ if (isset($_SESSION['usuario'])) {
                 <img src="/taller/images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $u['funcio_nombre']." ".$u['funcio_apellido']?>
-                    </div>
-                    <div class="email"><?php echo $u['funcio_email']?>
-                    </div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" 
-                            aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>
-                                <?php echo $u['per_desc']?>
-                                 </a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>
-                                <?php echo $u['sucu_nombre']?>
-                                 </a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/taller/index.php"><i class="material-icons">input</i>Salir</a></li>
-                      </ul>
-                 </div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $u['funcio_nombre'] . " " . $u['funcio_apellido'] ?>
+                </div>
+                <div class="email">
+                    <?php echo $u['funcio_email'] ?>
+                </div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:void(0);"><i class="material-icons">group</i>
+                                <?php echo $u['per_desc'] ?>
+                            </a></li>
+                        <li><a href="javascript:void(0);"><i class="material-icons">location_on</i>
+                                <?php echo $u['sucu_nombre'] ?>
+                            </a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/taller/index.php"><i class="material-icons">input</i>Salir</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- #User Info -->
@@ -301,7 +302,7 @@ if (isset($_SESSION['usuario'])) {
                                 <span>Refer. Compras</span>
                             </a>
                             <ul class="ml-menu">
-                            <li>
+                                <li>
                                     <a href="/taller/referenciales/ref_compras/proveedor/index.php">Proveedor</a>
                                 </li>
                                 <li>
@@ -346,18 +347,86 @@ if (isset($_SESSION['usuario'])) {
                                     <a href="/taller/referenciales/ref_ventas/formas_cobro/index.php">Forma de Cobro</a>
                                 </li>
                                 <li>
-                                    <a href="/taller/referenciales/ref_ventas/items/index.php">Caja</a>
+                                    <a href="/taller/referenciales/ref_ventas/caja/index.php">Caja</a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/cards/no-header.html">Entidad emisora</a>
+                                    <a href="/taller/referenciales/ref_ventas/entidad_emisora/index.php">Entidad emisora</a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/cards/no-header.html">Entidad aderida</a>
+                                    <a href="/taller/referenciales/ref_ventas/entidad_aderida/index.php">Entidad aderida</a>
                                 </li>
                                 <li>
-                                    <a href="pages/widgets/cards/no-header.html">Marca de tarjeta</a>
+                                    <a href="/taller/referenciales/ref_ventas/marca_tarjeta/index.php">Marca de tarjeta</a>
                                 </li>
                             </ul>
+                        </li>
+                    </ul>
+                </li>
+                <?php } ?>
+
+
+                <?php if ($u['per_desc'] == "AdminGRP") { ?>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">store</i>
+                        <span>Compras</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/taller/modulos/Compras/pedido_compras">Pedido compras</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Compras/Ordenes_compra">Ordenes de Compras</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Compras/Nota_credito_debito_compras">Notas de credito/debito Compras</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Compras/Nota_remision_compras">Notas de Remisión de compras</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Compras/Presupuesto_proveedor">Presupuesto proveedor</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Compras/Ajuste_inventario">Ajustes de inventario</a>
+                        </li>
+                    </ul>
+                </li>
+                <?php } ?>
+
+                <?php if ($u['per_desc'] == "AdminGRP") { ?>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">directions_boat</i>
+                        <span>Servicios</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/taller/modulos/Servicios/Contratos">Contratos</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Entrega_vehiculos">Entrega de vehiculos</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Insumos_utilizados">insumos utilizados</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Orden_trabajo">Orden de trabajo</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Promociones">Promociones</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Reclamos_clientes">Reclamos de clientes</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Solicitud_servicio">Solicitud de servicio</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Tipo_descuento">Tipo de descuentos</a>
+                        </li>
+                        <li>
+                            <a href="/taller/modulos/Servicios/Tipo_diagnostico">Tipo de diagnostico</a>
                         </li>
                     </ul>
                 </li>
@@ -377,68 +446,22 @@ if (isset($_SESSION['usuario'])) {
                             <a href="/taller/modulos/ventas/ventas">Ventas</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/colored.html">Facturación</a>
+                            <a href="/taller/modulos/ventas/Apertura_cierre_caja">Apertura y cierre de caja</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/no-header.html">Cobros</a>
+                            <a href="/taller/modulos/ventas/Arqueo_caja">Arqueo de caja</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/no-header.html">Notas de Crédito</a>
-                        </li>
-                    </ul>
-                </li>
-                <?php } ?>
-
-                <?php if ($u['per_desc'] == "AdminGRP") { ?>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">store</i>
-                        <span>Compras</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="/taller/modulos/basic.html">Pedidos</a>
+                            <a href="/taller/modulos/ventas/Forma_cobro_recibos">Formas de cobro e imprimir recibos</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/colored.html">Ordenes de Compras</a>
+                            <a href="/taller/modulos/ventas/Nota_credito_debito_venta">Notas de Crédito/debito ventas</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/no-header.html">Facturas de Compras</a>
+                            <a href="/taller/modulos/ventas/Nota_remision_ventas">Notas de remision ventas</a>
                         </li>
                         <li>
-                            <a href="pages/widgets/cards/no-header.html">Notas de Remisión</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/no-header.html">Notas de Crédito</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/no-header.html">Ajustes de Stock</a>
-                        </li>
-                    </ul>
-                </li>
-                <?php } ?>
-
-                <?php if ($u['per_desc'] == "AdminGRP") { ?>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">directions_boat</i>
-                        <span>Servicios</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="pages/widgets/cards/basic.html">Crear Reservas</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/colored.html">Presupuestos</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/no-header.html">Ordenes de Trabajo</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/no-header.html">Delivery</a>
-                        </li>
-                        <li>
-                            <a href="pages/widgets/cards/no-header.html">Reclamos</a>
+                            <a href="/taller/modulos/ventas/Recaudaciones_depositar">Recaudaciones a depositar</a>
                         </li>
                     </ul>
                 </li>

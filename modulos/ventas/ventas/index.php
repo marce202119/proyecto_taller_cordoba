@@ -52,7 +52,7 @@
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="hidden" id="id_funcionarios" value="<?php echo $u['id_funcionarios'] ?>" class="form-control" disabled>
-                                            <input type="text" id="funcionario" value="<?php echo $u['per_nombres'] ?> <?php echo $u['per_apellidos'] ?>" class="form-control" disabled>
+                                            <input type="text" id="funcionario" value="<?php echo $u['funcio_nombre'] ?> <?php echo $u['funcio_apellido'] ?>" class="form-control" disabled>
                                             <label class="form-label">Funcionario</label>
                                         </div>
                                     </div>

@@ -1,3 +1,5 @@
+listar();
+
 function agregar(){
     $("#operacion").val(1);
     $("#tip_items_nro").val(0);

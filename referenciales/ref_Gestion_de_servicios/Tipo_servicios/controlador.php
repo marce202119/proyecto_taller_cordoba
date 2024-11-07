@@ -6,16 +6,9 @@ $conexion = $objConexion->getConexion();
 
 if(isset($_POST['operacion'])){
 
-    $sql = "select * from sp_cliente(
-        {$_POST['client_cod']},
-        '{$_POST['client_nombre']}',
-        '{$_POST['client_apellido']}',
-        '{$_POST['client_doc_ident']}',
-        '{$_POST['client_direc']}',
-        '{$_POST['client_telf']}',
-        '{$_POST['client_email']}',
-        '{$_POST['client_fecha_in']}',
-        '{$_POST['client_obs']}',
+    $sql = "select * from sp_tipo_servicio(
+        {$_POST['tipo_serv_cod']},
+        '{$_POST['tipo_serv_descr']}'
         {$_POST['operacion']}
     ) as ultcod;";
 
@@ -40,7 +33,7 @@ if(isset($_POST['operacion'])){
 
     
 }else{
-    $sql = "select * from cliente";
+    $sql = "select * from tipo_servicio";
     $resultado = pg_query($conexion,$sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);

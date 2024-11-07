@@ -7,12 +7,13 @@ $conexion = $objConexion->getConexion();
 if(isset($_POST['operacion'])){
 
     $sql = "select * from sp_proveedores(
-        {$_POST['proveecod,']},
-        '{$_POST['nombre']}',
-        '{$_POST['ruc']}',
-        '{$_POST['direccion']}',
-        '{$_POST['email']}',
-        '{$_POST['telefono']}',
+        {$_POST['provee_cod,']},
+        '{$_POST['provee_name']}',
+        '{$_POST['provee_ruc']}',
+        '{$_POST['provee_direccion']}',
+        '{$_POST['provee_fecha_inc']}',
+        '{$_POST['provee_email']}',
+        '{$_POST['provee_telef']}',
         {$_POST['operacion']}
     ) as ultcod;";
     $resultado = pg_query($conexion,$sql);
@@ -36,9 +37,11 @@ if(isset($_POST['operacion'])){
     }
 
 }else{
-    $sql = "SELECT * FROM sp_proveedores";
+    $sql = "SELECT * from proveedor";
     $resultado = pg_query($conexion, $sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);
+
+
     }
 ?>

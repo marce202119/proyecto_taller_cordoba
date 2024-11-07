@@ -8,7 +8,7 @@ date_default_timezone_set("America/Asuncion");
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Referenciales | Depósitos</title>
+    <title>Referenciales | Depositos</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -28,7 +28,7 @@ date_default_timezone_set("America/Asuncion");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Depósitos</h2>
+                            <h2>Formulario de Depositos</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -46,7 +46,7 @@ date_default_timezone_set("America/Asuncion");
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="text" id="despo_desc" class="form-control editable" disabled>
-                                            <label class="form-label">Descripción</label>
+                                            <label class="form-label">Descripcion</label>
                                         </div>
                                     </div>
                                 </div>
@@ -93,8 +93,8 @@ date_default_timezone_set("America/Asuncion");
                                 <table class="table table-hover table-bordered table-striped dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Código Depósito</th>
-                                            <th>Descripción</th>
+                                            <th>Codigo Deposito</th>
+                                            <th>Descripcion</th>
                                             <th>Código Sucursal</th>
                                             <th>Código Item</th>
                                         </tr>

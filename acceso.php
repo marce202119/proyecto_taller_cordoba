@@ -5,14 +5,14 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/taller/app/clases/Conexion.php";
 $objConexion = new Conexion();
 $conexion = $objConexion->getConexion();
 
-// Obtén y sanitiza las entradas
+
 $usuario = $_POST['usu_alias'];
 $clave = $_POST['usu_clave'];
 
-// Usa una consulta preparada para prevenir la inyección SQL
-$sql = "SELECT u.*, p.id_perfil, p.per_desc, f.id_funcionarios, f.id_personas, 
+// Usa una consulta preparada para prevenir la inyección SQL"$1 y $2"
+$sql = "SELECT u.*, p.id_perfil, p.per_desc, f.id_funcionarios, f.id_personas,
 p2.id_personas, p2.per_nombres ||' '|| p2.per_apellidos as funcionario, 
-c.id_cargos, c.desc_cargo 
+c.id_cargos, c.desc_cargo
 FROM usuario AS u
 INNER JOIN perfil AS p ON u.id_perfil = p.id_perfil 
 INNER JOIN funcionarios AS f ON u.id_funcionarios = f.id_funcionarios

@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Ventas | Ventas</title>
+    <title>compras | Pedido compras</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -29,7 +29,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Ventas</h2>
+                            <h2>Formulario de Pedido compras</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -38,7 +38,7 @@ session_start();
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="text" id="pedido_nro" value="" class="form-control" disabled>
-                                            <label class="form-label">Código</label>
+                                            <label class="form-label">Codigo</label>
                                         </div>
                                     </div>
 
@@ -47,8 +47,8 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="sucu_cod" value="<?php echo $u['sucu_cod'] ?>" class="form-control" disabled>
-                                            <input type="text" id="sucursal" value="<?php echo $u['sucu_desc'] ?>" class="form-control" disabled>
+                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
+                                            <input type="text" id="sucursal" value="<?php echo $u['sucu_nombre'] ?>" class="form-control" disabled>
                                             <label class="form-label">Sucursal</label>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@ session_start();
                                 <div class="col-md-4">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="funcio_cod" value="<?php echo $u['funcio_cod'] ?>" class="form-control" disabled>
+                                            <input type="hidden" id="id_funcionarios" value="<?php echo $u['id_funcionarios'] ?>" class="form-control" disabled>
                                             <input type="text" id="funcionario" value="<?php echo $u['funcio_nombre'] ?> <?php echo $u['funcio_apellido'] ?>" class="form-control" disabled>
                                             <label class="form-label">Funcionario</label>
                                         </div>
@@ -92,7 +92,7 @@ session_start();
                     <div class="card">
 
                         <div class="header">
-                            <h2>Detalles de la Venta</h2>
+                            <h2>Detalles del pedido</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">
@@ -157,7 +157,7 @@ session_start();
                     <div class="card">
                         <div class="header">
                             <h2>
-                                VENTAS REGISTRADOS <small>Lista de Ventas Registrados</small>
+                                PEDIDOS REGISTRADOS <small>Lista de pedidos Registrados</small>
                             </h2>
                         </div>
                         <div class="body">

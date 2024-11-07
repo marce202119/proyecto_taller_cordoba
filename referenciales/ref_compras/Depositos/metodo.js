@@ -1,14 +1,15 @@
-// Función para agregar un nuevo depósito
+
 listar();
+
 function agregar() {
     $("#operacion").val(1);
-    $("#depo_nro").val(0);  // Asigna un valor inicial de 0
+    $("#depo_nro").val(0); 
     $(".editable").removeAttr("disabled");
     habilitarBotones(false);
     $(".form-line").attr("class", "form-line focused");
 }
 
-// Función para editar un depósito existente
+
 function editar() {
     $("#operacion").val(2);
     $(".editable").removeAttr("disabled");
@@ -16,18 +17,16 @@ function editar() {
     habilitarBotones(false);
 }
 
-// Función para borrar un depósito existente
+
 function borrar() {
     $("#operacion").val(3);
     habilitarBotones(false);
 }
 
-// Función para cancelar la operación
 function cancelar() {
     location.reload(true);
 }
 
-// Habilitar y deshabilitar botones según la operación
 function habilitarBotones(operacion1) {
     if (operacion1) {
         $(".btnOperacion1").attr("class", "btn btn-success waves-effect btnOperacion1");
@@ -40,7 +39,6 @@ function habilitarBotones(operacion1) {
     }
 }
 
-// Selección de datos de una sucursal
 function seleccionSucursal(datos) {
     Object.keys(datos).forEach(key => {
         $("#" + key).val(datos[key]);
@@ -50,7 +48,6 @@ function seleccionSucursal(datos) {
     $(".form-line").attr("class", "form-line focused");
 }
 
-// Listar datos de sucursal
 function getSucursal() {
     $.ajax({
         method: "POST",
@@ -70,7 +67,7 @@ function getSucursal() {
     });
 }
 
-// Confirmación de la operación CRUD
+
 function confirmarOperacion() {
     var operacion = $("#operacion").val();
     var pregunta = "¿Desea grabar el nuevo registro?";
@@ -100,7 +97,6 @@ function confirmarOperacion() {
     });
 }
 
-// Función para realizar la operación CRUD
 function grabar() {
     $.ajax({
         method: "POST",
@@ -128,7 +124,7 @@ function grabar() {
     });
 }
 
-// Listar todos los depósitos
+
 function listar() {
     $.ajax({
         method: "GET",
@@ -150,7 +146,7 @@ function listar() {
     });
 }
 
-// Selección de un depósito de la lista
+
 function seleccion(json) {
     Object.keys(json).forEach(function(key) {
         $("#" + key).val(json[key]);
@@ -158,7 +154,6 @@ function seleccion(json) {
     $(".form-line").attr("class", "form-line focused");
 }
 
-// Formato para la tabla de datos
 function formatoTabla() {
     $('.js-exportable').DataTable({
         "language": {

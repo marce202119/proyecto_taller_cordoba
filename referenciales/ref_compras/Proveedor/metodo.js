@@ -24,6 +24,58 @@ function cancelar(){
     location.reload(true);
 }
 
+function getTimbrado(){
+    $.ajax({
+        method: "POST",
+        url: "listaTimbrado.php",
+        data:{
+            timbrado:$("#timbrado").val()
+        }
+
+    }).done(function(lista){
+        var fila = "";
+        $.each(lista, function(i, item){
+            fila += "<li class='list-group-item' onclick='seleccionProveedor("+JSON.stringify(item)+")'>"+item.timbrado+"</li>";
+        });
+
+        $("#ulTimbra").html(fila);
+        $("#listaTimbra").attr("style", "display:block; position:absolute; z-index:3000;");
+    }).fail(function(a,b,c){
+        swal("ERROR", c, "error");
+    })
+}
+
+
+function getTipoprov(){
+    $.ajax({
+        method: "POST",
+        url: "listaTipoProveedor.php",
+        data:{
+            Tiprov:$("#Tiprov").val()
+        }
+
+    }).done(function(lista){
+        var fila = "";
+        $.each(lista, function(i, item){
+            fila += "<li class='list-group-item' onclick='seleccionProveedor("+JSON.stringify(item)+")'>"+item.tipoprov+"</li>";
+        });
+
+        $("#ulTipoProv").html(fila);
+        $("#listaTipoProv").attr("style", "display:block; position:absolute; z-index:3000;");
+    }).fail(function(a,b,c){
+        swal("ERROR", c, "error");
+    })
+}
+
+function seleccionProveedor(datos){
+    Object.keys(datos).forEach(key => {
+        $("#"+key).val(datos[key]);
+    });
+    $("#ulTipoProv").html("");
+    $("#listaTipoProv").attr("style", "display:none;");
+    $(".form-line").attr("class","form-line focused");
+}
+
 function habilitarBotones(operacion1){
     if(operacion1){
         $(".btnOperacion1").attr("class","btn btn-success waves-effect btnOperacion1");
@@ -66,6 +118,17 @@ function confirmarOperacion(){
 }
 
 function grabar(){
+    alert(
+            "provee_cod:" + $("#provee_cod").val()+"\n" +
+            "provee_name:" +$("#provee_name").val()+"\n" +
+            "provee_ruc:" +$("#provee_ruc").val()+"\n" +
+            "provee_direc:" +$("#provee_direc").val()+"\n" +
+            "provee_fecha_inc:" +$("#provee_fecha_inc").val()+"\n" +
+            "provee_email:" +$("#provee_email").val()+"\n" +
+            "provee_telef:" +$("#provee_telef").val()+"\n" +
+            "operacion:" +$("#operacion").val()
+    )
+
     $.ajax({
         method:"POST",
         url:"controlador.php",
@@ -76,7 +139,7 @@ function grabar(){
             provee_direccion: $("#provee_direccion").val(),
             provee_fecha_inc: $("#fecha_inc").val(),
             provee_email: $("#provee_email").val(),
-            provee_telefono: $("#provee_telefono").val(),
+            provee_telef: $("#provee_telef").val(),
             operacion: $("#operacion").val()
         }
 
@@ -111,10 +174,9 @@ function listar(){
                 lineas += "<td>" + rs.provee_cod + "</td>";
                 lineas += "<td>" + rs.provee_name + "</td>";
                 lineas += "<td>" + rs.provee_ruc + "</td>";
-                lineas += "<td>" + rs.provee_direccion + "</td>";
-                lineas += "<td>" + rs.provee_fecha_inc + "</td>";
+                lineas += "<td>" + rs.provee_direc + "</td>";
                 lineas += "<td>" + rs.provee_email + "</td>";
-                lineas += "<td>" + rs.provee_telefono + "</td>";
+                lineas += "<td>" + rs.provee_telef + "</td>";
             lineas += "</tr>"
         }
         $("#grilla_datos").html(lineas);
