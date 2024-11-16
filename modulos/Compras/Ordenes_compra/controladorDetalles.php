@@ -6,11 +6,11 @@ $conexion = $objConexion->getConexion();
 
 if(isset($_POST['operacion_det'])){
 
-    $sql = "select sp_pedido_compra_det(
-        {$_POST['pedido_nro']},
-        {$_POST['pdet_cantidad']},
-        {$_POST['pdet_precio']},
+    $sql = "select * from orden_comp_det(
+        {$_POST['orden_comp_nro']},
         {$_POST['items_cod']},
+        {$_POST['oc_cantidad']},
+        {$_POST['oc_precio']},
         {$_POST['operacion_det']}
     );";
 
@@ -34,10 +34,9 @@ if(isset($_POST['operacion_det'])){
 
     
 }else{
-    $sql = "select pcd.*, pcd.pdet_precio as items_precio, i.items_desc 
-    from pedido_compra_det as pcd 
-    inner join items as i on pcd.items_cod = i.items_cod 
-    where pcd.pedido_nro = {$_POST['pedido_nro']}";
+    $sql = "SELECT ocd.*,  i.items_nro, i.items_desc as mercaderia,
+    FROM orden_comp_det as ocd
+    inner join items as i on ocd.items_nro = i.items_nro";
     $resultado = pg_query($conexion,$sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);

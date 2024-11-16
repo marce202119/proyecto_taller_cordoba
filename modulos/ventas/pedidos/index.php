@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Pedidos</h2>
+                            <h2>Formulario de Pedidos Ventas</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -51,8 +51,8 @@
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="funcio_cod" value="<?php echo $u['funcio_cod'] ?>" class="form-control" disabled>
-                                            <input type="text" id="funcionario" value="<?php echo $u['funcio_nombre'] ?> <?php echo $u['funcio_apellido'] ?>" class="form-control" disabled>
+                                            <input type="hidden" id="id_funcionarios" value="<?php echo $u['id_funcionarios'] ?>" class="form-control" disabled>
+                                            <input type="text" id="funcionario" value="<?php echo $u['funcio_nombres'] ?> <?php echo $u['funcio_apellidos'] ?>" class="form-control" disabled>
                                             <label class="form-label">Funcionario</label>
                                         </div>
                                     </div>

@@ -12,7 +12,7 @@ if(isset($_POST['operacion'])){
         {$_POST['client_nro']},
         '{$_POST['pedido_obs']}',
         {$_POST['id_funcionarios']},
-        {$_POST['id_sucursal']},
+        '{$_POST['id_sucursal']}',
         '{$_POST['pedido_fecha_tope']}',
         '{$_POST['pedido_fecha_pedido']}',
         {$_POST['operacion']}

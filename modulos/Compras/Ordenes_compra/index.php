@@ -29,7 +29,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Ventas</h2>
+                            <h2>Formulario de ordenes de compra</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -37,18 +37,24 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="pedido_nro" value="" class="form-control" disabled>
+                                            <input type="text" id="orden_comp_nro" value="" class="form-control" disabled>
                                             <label class="form-label">Código</label>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
+                                            <input type="datetime" id="orden_comp_fecha" value="<?php date('d/m/Y h:m:s') ?>" class="form-control datetimepicker" disabled>
+                                            <label class="form-label">Orden de compra fecha</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
                                             <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
-                                            <input type="text" id="sucursal" value="<?php echo $u['sucu_nombre'] ?>" class="form-control" disabled>
+                                            <input type="text" id="Sucursal" value="<?php echo $u['sucu_nombre'] ?> 
                                             <label class="form-label">Sucursal</label>
                                         </div>
                                     </div>
@@ -56,17 +62,8 @@ session_start();
                                 <div class="col-md-4">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="id_funcionarios" value="<?php echo $u['id_funcionarios'] ?>" class="form-control" disabled>
-                                            <input type="text" id="funcionario" value="<?php echo $u['funcio_nombre'] ?> <?php echo $u['funcio_apellido'] ?>" class="form-control" disabled>
-                                            <label class="form-label">Funcionario</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="datetime" id="pedido_fecha" value="<?= date('d/m/Y h:m:s') ?>" class="form-control datetimepicker" disabled>
-                                            <label class="form-label">Fecha de Registro</label>
+                                        <input type="text" id="orden_comp_estado" value="" class="form-control" disabled>
+                                            <label class="form-label">Estado orden de compra</label>
                                         </div>
                                     </div>
                                 </div>
@@ -74,12 +71,19 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="pedido_estado" class="form-control" disabled>
-                                            <label class="form-label">Estado</label>
+                                            <input type="text" id="provee_cod" class="form-control" disabled>
+                                            <label class="form-label">Codigo proveedor</label>
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <div class="col-md-3">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" id="tip_fac_cod" class="form-control" disabled>
+                                            <label class="form-label">Tipo de factura </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="button-demo text-center">
                                     <button type="button" class="btn btn-success waves-effect btnOperacion1" onclick="agregar();">AGREGAR</button>
@@ -92,7 +96,7 @@ session_start();
                     <div class="card">
 
                         <div class="header">
-                            <h2>Detalles de la Venta</h2>
+                            <h2>Detalles de la compra</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">

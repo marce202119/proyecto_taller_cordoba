@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>compras | Pedido compras</title>
+    <title>Compras | Ajuste inventario</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -29,7 +29,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Pedido compras</h2>
+                            <h2>Formulario de Ajuste de inventario</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -37,49 +37,44 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="pedido_nro" value="" class="form-control" disabled>
-                                            <label class="form-label">Codigo</label>
+                                            <input type="text" id="ajus_nro" value="" class="form-control" disabled>
+                                            <label class="form-label">Código</label>
                                         </div>
                                     </div>
-
-
                                 </div>
-                                <div class="col-md-3">
-                                <div class="form-group form-float">
+                                <div class="col-md-4">
+                                    <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
-                                            <input type="text" id="sucursal" value="<?php echo $u['sucu_nombre'] ?> 
-                                            <label class="form-label">sucursal</label>
+                                            <input type="hidden" id="sucu_cod" value="<?php echo $u['sucu_cod'] ?>" class="form-control" disabled>
+                                            <input type="text" id="Sucursal" value="<?php echo $u['sucu_nombre'] ?> 
+                                            <label class="form-label">Sucursal</label>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="hidden" id="id_funcionarios" name="funcio_cod" value="<?php echo $u['id_funcionarios'] ?>" class="form-control">
-                                        <input type="text" id="funcionarios" value="<?php echo $u['funcio_nombre'] ?>" class="form-control" disabled>
-                                        <label class="form-label">Funcionario</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                        <input type="text" id="funcio_cod" value="" class="form-control" disabled>
+                                            <label class="form-label">Codigo de funcionario</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="datetime" id="pedido_fecha" value="<?= date('d/m/Y h:m:s') ?>" class="form-control datetimepicker" disabled>
-                                            <label class="form-label">Fecha de Registro</label>
+                                            <input type="datetime" id="ajus_fecha" value="<?php date('d/m/Y h:m:s') ?>" class="form-control datetimepicker" disabled>
+                                            <label class="form-label">Fecha de ajuste</label>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="pedido_estado" class="form-control" disabled>
-                                            <label class="form-label">Estado</label>
+                                            <input type="text" id="ajus_esatdo" class="form-control" disabled>
+                                            <label class="form-label">Estado de ajuste</label>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                             <div class="button-demo text-center">
                                     <button type="button" class="btn btn-success waves-effect btnOperacion1" onclick="agregar();">AGREGAR</button>
@@ -92,7 +87,7 @@ session_start();
                     <div class="card">
 
                         <div class="header">
-                            <h2>Detalles del pedido</h2>
+                            <h2>Detalles del ajuste</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">
@@ -100,9 +95,9 @@ session_start();
                                 <div class="col-md-5">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="items_cod" value="0">
-                                            <input type="text" id="items_desc" class="form-control editableDet" onclick="getProducto()">
-                                            <label class="form-label">Producto</label>
+                                            <input type="hidden" id="ajus_nro" value="0">
+                                            <input type="text" id="ajus_nro" class="form-control editableDet" onclick="getProducto()">
+                                            <label class="form-label">Ajuste numero</label>
                                             <div id="listaProductos" style="display: none;">
                                                 <ul class="list-group" id="ulProductos"></ul>
                                             </div>
@@ -157,7 +152,7 @@ session_start();
                     <div class="card">
                         <div class="header">
                             <h2>
-                                PEDIDOS REGISTRADOS <small>Lista de pedidos Registrados</small>
+                                AJUSTES DE INVENTARIO REGISTRADOS <small>Lista de ajustes de inventario Registrados</small>
                             </h2>
                         </div>
                         <div class="body">

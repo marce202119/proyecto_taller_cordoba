@@ -117,8 +117,8 @@ function confirmarOperacion(){
     });
 }
 
-function grabar(){
-    alert(
+
+   /* alert( 
             "provee_cod:" + $("#provee_cod").val()+"\n" +
             "provee_name:" +$("#provee_name").val()+"\n" +
             "provee_ruc:" +$("#provee_ruc").val()+"\n" +
@@ -127,8 +127,8 @@ function grabar(){
             "provee_email:" +$("#provee_email").val()+"\n" +
             "provee_telef:" +$("#provee_telef").val()+"\n" +
             "operacion:" +$("#operacion").val()
-    )
-
+    )*/
+    function grabar(){
     $.ajax({
         method:"POST",
         url:"controlador.php",

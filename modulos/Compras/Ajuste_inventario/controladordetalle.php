@@ -4,19 +4,15 @@ require_once "../../../app/clases/Conexion.php";
 $objConexion = new Conexion();
 $conexion = $objConexion->getConexion();
 
-if(isset($_POST['operacion'])){
+if(isset($_POST['operacion_det'])){
 
-    $sql = "select * from sp_orden_comp_cab(
-        {$_POST['orden_comp_nro']},
-        '{$_POST['orden_comp_fecha']}',
-        {$_POST['sucu_cod']},
-        '{$_POST['orden_compra_estado']}',
-        {$_POST['provee_cod']},
-        {$_POST['tip_fac_cod']},
-        {$_POST['operacion']}
-    ) as ultcod;";
-
-    //echo ($sql);
+    $sql = "select sp_ajuste_det(
+        {$_POST['ajus_nro']},
+        '{$_POST['ajus_motivo']}',
+        {$_POST['ajus_det_cantidad']},
+        {$_POST['ajus_det_precio']},
+        {$_POST['operacion_det']}
+    );";
 
     $resultado = pg_query($conexion,$sql);
     if(!$resultado){
@@ -31,14 +27,16 @@ if(isset($_POST['operacion'])){
         echo json_encode(
             array(
                 "mensaje"=>pg_last_notice($conexion),
-                "tipo"=>"success",
-                "ultcod"=>$ultcod['ultcod']
+                "tipo"=>"success"
             )
         );
     }
-} else {
-    $sql = "select * from pedido_compra_cab as pcc ";
-    $resultado = pg_query($conexion, $sql);
+
+    
+}else{
+    $sql = "select 
+    ;";
+    $resultado = pg_query($conexion,$sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);
 }

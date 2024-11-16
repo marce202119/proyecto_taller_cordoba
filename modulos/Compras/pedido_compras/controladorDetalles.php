@@ -10,7 +10,7 @@ if(isset($_POST['operacion_det'])){
         {$_POST['pedido_nro']},
         {$_POST['pdet_cantidad']},
         {$_POST['pdet_precio']},
-        {$_POST['items_cod']},
+        {$_POST['funcio_cod']},
         {$_POST['operacion_det']}
     );";
 
@@ -34,9 +34,8 @@ if(isset($_POST['operacion_det'])){
 
     
 }else{
-    $sql = "select pcd.*, pcd.pdet_precio as items_precio, i.items_desc 
+    $sql = "select pcd.*, pcd.pdet_precio as pdet_cantidad
     from pedido_compra_det as pcd 
-    inner join items as i on pcd.items_cod = i.items_cod 
     where pcd.pedido_nro = {$_POST['pedido_nro']}";
     $resultado = pg_query($conexion,$sql);
     $datos = pg_fetch_all($resultado);

@@ -6,13 +6,12 @@ $conexion = $objConexion->getConexion();
 
 if(isset($_POST['operacion'])){
 
-    $sql = "select * from sp_orden_comp_cab(
-        {$_POST['orden_comp_nro']},
-        '{$_POST['orden_comp_fecha']}',
+    $sql = "select * from sp_ajuste_cab(
+        {$_POST['ajus_nro']},
         {$_POST['sucu_cod']},
-        '{$_POST['orden_compra_estado']}',
-        {$_POST['provee_cod']},
-        {$_POST['tip_fac_cod']},
+        {$_POST['funcio_cod']},
+        '{$_POST['ajus_fecha']}',
+        '{$_POST['ajus_estado']}',
         {$_POST['operacion']}
     ) as ultcod;";
 
@@ -37,7 +36,7 @@ if(isset($_POST['operacion'])){
         );
     }
 } else {
-    $sql = "select * from pedido_compra_cab as pcc ";
+    $sql = "select * from ajuste_cab ";
     $resultado = pg_query($conexion, $sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);
