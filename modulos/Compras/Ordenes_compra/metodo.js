@@ -1,119 +1,68 @@
 listar();
 formatoFecha();
 
-function getClientes(){
+function getlistaProveedor(){
     $.ajax({
         method: "POST",
-        url: "listaClientes.php",
+        url: "listaProveedor.php",
         data:{
-            cliente:$("#cliente").val()
+            proveedor:$("#proveedor").val()
         }
 
     }).done(function(lista){
         
         var fila = "";
         $.each(lista, function(i, item){
-            fila += "<li class='list-group-item' onclick='seleccionCliente("+JSON.stringify(item)+")'>"+item.cliente+"</li>";
+            fila += "<li class='list-group-item' onclick='seleccionproveedor("+JSON.stringify(item)+")'>"+item.proveedor+"</li>";
         });
 
-        $("#ulClientes").html(fila);
-        $("#listaClientes").attr("style", "display:block; position:absolute; z-index:3000;");
+        $("#ulproveedor").html(fila);
+        $("#listaProveedor").attr("style", "display:block; position:absolute; z-index:3000;");
     }).fail(function(a,b,c){
         swal("ERROR", c, "error");
     })
 }
 
-function seleccionCliente(datos){
+function seleccionlistaProveedor(datos){
     Object.keys(datos).forEach(key => {
         $("#"+key).val(datos[key]);
     });
-    $("#ulClientes").html("");
-    $("#listaClientes").attr("style", "display:none;");
+    $("#ulproveedor").html("");
+    $("#listaProveedor").attr("style", "display:none;");
     $(".form-line").attr("class","form-line focused");
 }
 
-function getPedidos(){
-    var pedidosnro = $("#client_nro").val();
+function seleccionSucursal(datos) {
+    Object.keys(datos).forEach(key => {
+        $("#" + key).val(datos[key]);
+    });
+    $("#ulSucursal").html("");
+    $("#listaSucursal").attr("style", "display:none;");
+    $(".form-line").attr("class", "form-line focused");
+}
+
+function getSucursal() {
     $.ajax({
         method: "POST",
-        url: "listaPedidos.php",
-        data:{
-            pedidos:pedidosnro
+        url: "listaSucursal.php",
+        data: {
+            sucu_desc: $("#sucu_desc").val()
         }
-
-    }).done(function(lista){
-        
+    }).done(function(lista) {
         var fila = "";
-        $.each(lista, function(i, item){
-            fila += "<li class='list-group-item' onclick='seleccionPedidos("+JSON.stringify(item)+")'>"+item.pedidos+"</li>";
+        $.each(lista, function(i, item) {
+            fila += "<li class='list-group-item' onclick='seleccionSucursal(" + JSON.stringify(item) + ")'>" + item.sucu_desc + "</li>";
         });
-
-        $("#ulPedidos").html(fila);
-        $("#listaPedidos").attr("style", "display:block; position:absolute; z-index:3000;");
-    }).fail(function(a,b,c){
+        $("#ulSucursal").html(fila);
+        $("#listaSucursal").attr("style", "display:block; position:absolute; z-index:3000;");
+    }).fail(function(a, b, c) {
         swal("ERROR", c, "error");
-    })
-}
-
-function seleccionPedidos(datos){
-    Object.keys(datos).forEach(key => {
-        $("#"+key).val(datos[key]);
     });
-    $("#ulPedidos").html("");
-    $("#listaPedidos").attr("style", "display:none;");
-    $(".form-line").attr("class","form-line focused");
 }
-
-function getCondi(){
-    var condi = $("#condicion").val();
-    $.ajax({
-        method: "POST",
-        url: "listaCondicion.php",
-        data:{
-            condicion:condi
-        }
-
-    }).done(function(lista){
-        
-        var fila = "";
-        $.each(lista, function(i, item){
-            fila += "<li class='list-group-item' onclick='seleccionCondicion("+JSON.stringify(item)+")'>"+item.condicion+"</li>";
-        });
-
-        $("#ulCondi").html(fila);
-        $("#listaCondi").attr("style", "display:block; position:absolute; z-index:3000;");
-    }).fail(function(a,b,c){
-        swal("ERROR", c, "error");
-    })
-}
-
-function seleccionCondicion(datos){
-    Object.keys(datos).forEach(key => {
-        $("#"+key).val(datos[key]);
-    });
-    $("#ulCondi").html("");
-    $("#listaCondi").attr("style", "display:none;");
-    $(".form-line").attr("class","form-line focused");
-    condicion();
-}
-
-function condicion(){
-    var tipfactura = $("#tip_fac_nro").val()
-    if (tipfactura === '2') {
-        $(".editable").removeAttr("disabled");
-        $('#vent_cuotas').val('0');
-        $('#vent_plazo').val('0');
-    } else if(tipfactura === '1') {
-        $(".editable").attr("disabled", "disabled");
-        $('#vent_cuotas').val('1');
-        $('#vent_plazo').val('0');
-    }
-}
-
 
 function agregar(){
     $("#operacion").val(1);
-    $("#ventas_nro").val(0);
+    $("#orden_comp_nro").val(0);
     $(".editables").removeAttr("disabled");
     habilitarBotones(false);
     $(".form-line").attr("class","form-line focused");
@@ -146,69 +95,6 @@ function habilitarBotones(operacion1){
         $(".btnOperacion4").attr("class","btn btn-danger waves-effect btnOperacion4");
         $(".btnOperacion1").attr("class","btn btn-success waves-effect btnOperacion1 hidden");
     }
-}
-
-function getProducto(){
-
-    var sucursal = $("#id_sucursal").val()
-    var mercaderia = $("#pedido_nro").val()
-
-    if (mercaderia > 0) {
-
-        $.ajax({
-            method: "POST",
-            url: "listaProductos.php",
-            data:{
-                mercaderia:mercaderia,
-                sucursal: sucursal
-            }
-    
-        }).done(function(lista){
-            
-            var fila = "";
-            $.each(lista, function(i, item){
-                fila += "<li class='list-group-item' onclick='seleccionProducto("+JSON.stringify(item)+")'>"+item.mercaderia+"</li>";
-            });
-    
-            $("#ulProductos").html(fila);
-            $("#listaProductos").attr("style", "display:block; position:absolute; z-index:3000;");
-        }).fail(function(a,b,c){
-            swal("ERROR", c, "error");
-        })
-        
-    } else {
-        var mercaderia = $("#mercaderia").val()
-        $.ajax({
-            method: "POST",
-            url: "listaProductos2.php",
-            data:{
-                mercaderia:mercaderia,
-                sucursal: sucursal
-            }
-    
-        }).done(function(lista){
-            
-            var fila = "";
-            $.each(lista, function(i, item){
-                fila += "<li class='list-group-item' onclick='seleccionProducto("+JSON.stringify(item)+")'>"+item.mercaderia+"</li>";
-            });
-    
-            $("#ulProductos").html(fila);
-            $("#listaProductos").attr("style", "display:block; position:absolute; z-index:3000;");
-        }).fail(function(a,b,c){
-            swal("ERROR", c, "error");
-        })
-        
-    }
-}
-
-function seleccionProducto(datos){
-    Object.keys(datos).forEach(key => {
-        $("#"+key).val(datos[key]);
-    });
-    $("#ulProductos").html("");
-    $("#listaProductos").attr("style", "display:none;");
-    $(".form-line").attr("class","form-line focused");
 }
 
 function formatoFecha(){
@@ -261,15 +147,12 @@ function grabar(){
         method:"POST",
         url:"controlador.php",
         data:{
-            ventas_nro:$("#ventas_nro").val(),
-            vent_fech_emision:$("#vent_fech_emision").val(),
-            tip_fac_nro:$("#tip_fac_nro").val(),
-            vent_cuotas:$("#vent_cuotas").val(),
-            vent_plazo:$("#vent_plazo").val(),
+            orden_comp_nro:$("#orden_comp_nro").val(),
+            orden_comp_fecha:$("#orden_comp_fecha").val(),
             id_sucursal:$("#id_sucursal").val(),
-            id_usuario:$("#id_funcionarios").val(),
-            client_nro:$("#client_nro").val(),
-            pedido_nro:$("#pedido_nro").val(),
+            orden_compra_estado:$("#orden_compra_estado").val(),
+            provee_cod:$("#provee_cod").val(),
+            tip_fac_cod:$("#tip_fac_cod").val(),
             operacion:$("#operacion").val()
         }
     }).done(function(respuesta){
@@ -281,7 +164,7 @@ function grabar(){
         },
         function(){
             if(respuesta.tipo=="success"){
-                $("#ventas_nro").val(respuesta.ultcod)
+                $("#orden_comp_nro").val(respuesta.ultcod)
             }
         });
     }).fail(function(a,b,c){
@@ -294,11 +177,10 @@ function agregarDetalle(operacion){
         method:"POST",
         url:"controladorDetalles.php",
         data:{
-            ventas_nro:$("#ventas_nro").val(),
-            depo_nro:$("#depo_nro").val(),
+            orden_comp_nro:$("#orden_comp_nro").val(),
             items_nro:$("#items_nro").val(),
-            ventas_precio:$("#items_precio").val(),
-            ventas_cantidad:$("#pedido_cantidad").val(),
+            oc_cantidad:$("#oc_cantidad").val(),
+            oc_precio:$("#oc_precio").val(),
             operacion_det:operacion
         }
     }).done(function(respuesta){
@@ -329,19 +211,22 @@ function listar(){
         for(rs of resultado){
             lineas += "<tr onclick='seleccion("+JSON.stringify(rs)+")'>"
                 lineas += "<td>";
-                    lineas += rs.ventas_nro;
+                    lineas += rs.orden_comp_nro;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.cliente;
+                    lineas += rs.orden_comp_fecha;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.pedidos;
+                    lineas += rs.id_sucursal;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.condicion;
+                    lineas += rs.orden_compra_estado;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.vent_estado;
+                    lineas += rs.provee_cod;
+                lineas += "</td>";
+                lineas += "<td>";
+                    lineas += rs.tip_fac_cod;
                 lineas += "</td>";
             lineas += "</tr>"
         }
@@ -373,109 +258,6 @@ function formatoTabla(){
         ]
     });
 }
-
-function listarDetalles(){
-    $.ajax({
-        method:"POST",
-        url:"controladorDetalles.php",
-        data:{
-            ventas_nro: $("#ventas_nro").val()
-        }
-    }).done(function(resultadoDet){
-        console.log(JSON.stringify(resultadoDet));
-        var lineas = "";
-        var totalExe = 0;
-        var totalG5 = 0;
-        var totalG10 = 0;
-        var iva5 = 0;
-        var iva10 = 0;
-        var totalIva = 0;
-        var totalGral = 0;
-        for(rsd of resultadoDet){
-            totalExe += parseInt(rsd.exenta);
-            totalG5 += parseInt(rsd.grav5);
-            totalG10 += parseInt(rsd.grav10);
-            lineas += "<tr onclick='seleccionDetalle("+JSON.stringify(rsd)+")'>"
-                lineas += "<td>";
-                    lineas += rsd.items_nro;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.mercaderia;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.ventas_precio;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.pedido_cantidad;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.exenta;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.grav5;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rsd.grav10;
-                lineas += "</td>";
-            lineas += "</tr>"
-        }
-        iva5 = parseInt(totalG5/21);
-        iva10 = parseInt(totalG10/11);
-        totalIva = iva5+iva10;
-        totalGral = totalExe+totalG5+totalG10;
-        var lineaFoot = "<tr>";
-            lineaFoot += "<th colspan='4'>";
-                lineaFoot += "SUBTOTALES";
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += totalExe;
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += totalG5;
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += totalG10;
-            lineaFoot += "</th>";
-        lineaFoot += "</tr>";
-
-        lineaFoot += "<tr>";
-            lineaFoot += "<th colspan='5'>";
-                lineaFoot += "LIQUIDACION DE IVA";
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += iva5;
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += iva10;
-            lineaFoot += "</th>";
-        lineaFoot += "</tr>";
-
-        lineaFoot += "<tr class='bg-orange'>";
-            lineaFoot += "<th colspan='6'>";
-                lineaFoot += "TOTAL IVA";
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += totalIva;
-            lineaFoot += "</th>";
-        lineaFoot += "</tr>";
-
-        lineaFoot += "<tr class='bg-red'>";
-            lineaFoot += "<th colspan='6'>";
-                lineaFoot += "TOTAL GENERAL";
-            lineaFoot += "</th>";
-            lineaFoot += "<th>";
-                lineaFoot += totalGral;
-            lineaFoot += "</th>";
-        lineaFoot += "</tr>";
-        
-        $("#grilla_detalles").html(lineas);
-        $("#pie_detalles").html(lineaFoot);
-
-    }).fail(function(a,b,c){
-        alert(c);
-    })
-}
-
 function seleccionDetalle(json){
     Object.keys(json).forEach(function(key) {
         $("#"+key).val(json[key]);

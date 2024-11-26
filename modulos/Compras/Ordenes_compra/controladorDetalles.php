@@ -8,7 +8,7 @@ if(isset($_POST['operacion_det'])){
 
     $sql = "select * from orden_comp_det(
         {$_POST['orden_comp_nro']},
-        {$_POST['items_cod']},
+        {$_POST['items_nro']},
         {$_POST['oc_cantidad']},
         {$_POST['oc_precio']},
         {$_POST['operacion_det']}

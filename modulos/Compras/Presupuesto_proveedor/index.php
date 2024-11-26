@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Compras | Compras</title>
+    <title>Compras | presupuesto proveedor</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -29,7 +29,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de compras</h2>
+                            <h2>Formulario de presupuesto porveedor</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">

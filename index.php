@@ -1,7 +1,7 @@
 ﻿<?php
     session_start();
     session_destroy();
-$sql = "SELECT sucu_cod, sucu_desc FROM sucursal ORDER BY sucu_desc ASC";
+$sql = "SELECT id_sucursal, sucu_nombre FROM sucursal ORDER BY sucu_nombre ASC";
 
 ?>
 

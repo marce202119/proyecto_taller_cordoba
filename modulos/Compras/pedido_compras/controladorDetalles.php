@@ -10,7 +10,7 @@ if(isset($_POST['operacion_det'])){
         {$_POST['pedido_nro']},
         {$_POST['pdet_cantidad']},
         {$_POST['pdet_precio']},
-        {$_POST['funcio_cod']},
+        {$_POST['id_funcionarios']},
         {$_POST['operacion_det']}
     );";
 

@@ -9,7 +9,7 @@ if(isset($_POST['operacion'])){
     $sql = "select * from sp_orden_comp_cab(
         {$_POST['orden_comp_nro']},
         '{$_POST['orden_comp_fecha']}',
-        {$_POST['sucu_cod']},
+        {$_POST['id_sucursal']},
         '{$_POST['orden_compra_estado']}',
         {$_POST['provee_cod']},
         {$_POST['tip_fac_cod']},

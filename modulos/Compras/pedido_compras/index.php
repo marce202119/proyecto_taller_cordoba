@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -41,27 +40,7 @@ session_start();
                                             <label class="form-label">Codigo</label>
                                         </div>
                                     </div>
-
-
                                 </div>
-                                <div class="col-md-3">
-                                <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
-                                            <input type="text" id="sucursal" value="<?php echo $u['sucu_nombre'] ?> 
-                                            <label class="form-label">sucursal</label>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="hidden" id="id_funcionarios" name="funcio_cod" value="<?php echo $u['id_funcionarios'] ?>" class="form-control">
-                                        <input type="text" id="funcionarios" value="<?php echo $u['funcio_nombre'] ?>" class="form-control" disabled>
-                                        <label class="form-label">Funcionario</label>
-                                    </div>
-                                </div>
-                            </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -70,7 +49,15 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <div class="col-md-3">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
+                                            <input type="text" id="sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control">
+                                            <label class="form-label">Sucursal</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -97,14 +84,14 @@ session_start();
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">
                             <div class="row clearfix">
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="items_cod" value="0">
-                                            <input type="text" id="items_desc" class="form-control editableDet" onclick="getProducto()">
-                                            <label class="form-label">Producto</label>
-                                            <div id="listaProductos" style="display: none;">
-                                                <ul class="list-group" id="ulProductos"></ul>
+                                            <input type="hidden" id="items_nro" value="0">
+                                            <input type="text" id="items_desc" class="form-control editableDet" onclick="getItems()">
+                                            <label class="form-label">Items</label>
+                                            <div id="listaItems" style="display: none;">
+                                                <ul class="list-group" id="ulItems"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -112,16 +99,32 @@ session_start();
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="items_precio" class="form-control editableDet">
+                                            <input type="text" id="pedido_nro" class="form-control editableDet">
+                                            <label class="form-label">Numero de pedido</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" id="pdet_cantidad" class="form-control editableDet">
+                                            <label class="form-label">Cantidad</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" id="pdet_precio" class="form-control editableDet">
                                             <label class="form-label">Precio</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="number" id="pdet_cantidad" class="form-control editableDet">
-                                            <label class="form-label">Cantidad</label>
+                                            <input type="number" id="funcio_cod" class="form-control editableDet">
+                                            <label class="form-label">Funcionario</label>
                                         </div>
                                     </div>
                                 </div>

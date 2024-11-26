@@ -43,11 +43,11 @@ session_start();
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-float">
+                                <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="sucu_cod" value="<?php echo $u['sucu_cod'] ?>" class="form-control" disabled>
-                                            <input type="text" id="Sucursal" value="<?php echo $u['sucu_nombre'] ?> 
-                                            <label class="form-label">Sucursal</label>
+                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
+                                            <input type="text" id="sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
+                                            <label class="form-label">sucursal</label>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-5">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="datetime" id="ajus_fecha" value="<?php date('d/m/Y h:m:s') ?>" class="form-control datetimepicker" disabled>
@@ -67,10 +67,10 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="ajus_esatdo" class="form-control" disabled>
+                                            <input type="text" id="ajus_estado" class="form-control" disabled>
                                             <label class="form-label">Estado de ajuste</label>
                                         </div>
                                     </div>
@@ -92,14 +92,14 @@ session_start();
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">
                             <div class="row clearfix">
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="hidden" id="ajus_nro" value="0">
-                                            <input type="text" id="ajus_nro" class="form-control editableDet" onclick="getProducto()">
+                                            <input type="text" id="ajus_nro" class="form-control editableDet" onclick="getItems()">
                                             <label class="form-label">Ajuste numero</label>
-                                            <div id="listaProductos" style="display: none;">
-                                                <ul class="list-group" id="ulProductos"></ul>
+                                            <div id="listaItems" style="display: none;">
+                                                <ul class="list-group" id="ulItems"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -107,20 +107,27 @@ session_start();
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="items_precio" class="form-control editableDet">
-                                            <label class="form-label">Precio</label>
+                                            <input type="text" id="ajus_motivo_cod" class="form-control editableDet">
+                                            <label class="form-label">Motivo de ajuste</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="number" id="pdet_cantidad" class="form-control editableDet">
-                                            <label class="form-label">Cantidad</label>
+                                            <input type="number" id="ajus_det_cantidad" class="form-control editableDet">
+                                            <label class="form-label">Cantidad de ajuste</label>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-md-3">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="number" id="ajus_det_precio" class="form-control editableDet">
+                                            <label class="form-label">Precio del ajuste</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-2">
                                     <div class="button-demo text-center">
                                         <button type="button" class="btn btn-success waves-effect btnOperacion2" onclick="agregarDetalle(1);">AGREGAR</button>
@@ -134,15 +141,17 @@ session_start();
                                 <table class="table table-hover table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Items</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody id="grilla_detalles">
                                     </tbody>
                                     <tfoot id="pie_detalles">
-
+                                        <th>AJUSTE NRO</th>
+                                        <th>MOTIVO</th>
+                                        <th>CANTIDAD</th>
+                                        <th>PRECIO</th>
+                                        <th>ESTADO</th>
                                     </tfoot>
                                 </table>
                             </div>
@@ -160,9 +169,11 @@ session_start();
                                 <table class="table table-hover table-bordered table-striped dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Fecha</th>
-                                            <th>Estado</th>
+                                        <th>AJUSTE NRO</th>
+                                        <th>SUCURSAL</th>
+                                        <th>FUNCIONARIO</th>
+                                        <th>FECHA</th>
+                                        <th>ESTADO</th>
                                         </tr>
                                     </thead>
                                     <tbody id="grilla_datos">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Ventas | Pedidos de Ventas</title>
+    <title>Ventas | Apertura y cierre de caja</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de Pedidos Ventas</h2>
+                            <h2>Formulario apertura y cierre de caja</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -32,7 +32,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="pedido_nro" value="<?php echo "001" ?>" class="form-control" disabled>
+                                            <input type="text" id="aper_cierre_nro" value="<?php echo "001" ?>" class="form-control" disabled>
                                             <label class="form-label">Código</label>
                                         </div>
                                     </div>

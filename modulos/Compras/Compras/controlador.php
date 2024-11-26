@@ -13,7 +13,7 @@ if(isset($_POST['operacion'])){
         {$_POST['comp_plazo']},
         '{$_POST['comp_inter_fcha_cuot_venci']}',
         '{$_POST['comp_estado']}',
-        {$_POST['sucu_cod']},
+        {$_POST['id_sucursal']},
         {$_POST['tip_fac_cod']},
         {$_POST['timb_cod']},
         {$_POST['operacion']}

@@ -6,15 +6,15 @@ $conexion = $objConexion->getConexion();
 
 if(isset($_POST['operacion'])){
 
-    $sql = "select * from sp_pedidos_ventas_cab(
-        {$_POST['pedido_nro']},
-        '{$_POST['pedido_fecha']}',
-        {$_POST['client_nro']},
-        '{$_POST['pedido_obs']}',
-        {$_POST['id_funcionarios']},
-        '{$_POST['id_sucursal']}',
-        '{$_POST['pedido_fecha_tope']}',
-        '{$_POST['pedido_fecha_pedido']}',
+    $sql = "select * from sp_apertura_cierre(
+        {$_POST['aper_cierre_nro']},
+        '{$_POST['ac_fcha_cierre']}',
+        '{$_POST['ac_fcha_apertura']}',
+        {$_POST['ac_monto_apertura']},
+        {$_POST['ac_monto_cierre']},
+        {$_POST['id_sucursal']},
+        {$_POST['funcio_cod']},
+        {$_POST['caja_nro']},
         {$_POST['operacion']}
     ) as ultcod;";
 
@@ -39,16 +39,7 @@ if(isset($_POST['operacion'])){
 
     
 }else{
-    $sql = "select 
-    pvc.*,
-    to_char(pvc.pedido_fecha, 'dd/mm/yyyy HH24:mi:ss') as pedido_fecha_f,
-    to_char(pvc.pedido_fecha_pedido, 'dd/mm/yyyy HH24:mi:ss') as pedido_fecha_pedido_f,
-    to_char(pvc.pedido_fecha_tope, 'dd/mm/yyyy HH24:mi:ss') as pedido_fecha_tope_f,
-    to_char(pvc.pedido_fecha_cancel, 'dd/mm/yyyy HH24:mi:ss') as pedido_fecha_cancel_f,
-    c.client_razon_social as cliente,
-    c.client_ruc,pvc.pedido_estado 
-    from pedidos_ventas_cab as pvc
-    inner join cliente as c  on pvc.client_nro = c.client_nro;";
+    $sql = "select select * from apertura_cierre as ac";
     $resultado = pg_query($conexion,$sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);

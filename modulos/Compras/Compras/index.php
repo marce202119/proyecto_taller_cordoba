@@ -86,7 +86,7 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="sucu_cod" class="form-control" disabled>
+                                            <input type="text" id="id_sucursal" class="form-control" disabled>
                                             <label class="form-label">Sucursal nombre</label>
                                         </div>
                                     </div>
@@ -139,16 +139,16 @@ session_start();
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="items_precio" class="form-control editableDet">
-                                            <label class="form-label">Precio</label>
+                                            <input type="number" id="comp_nro_factura" class="form-control editableDet">
+                                            <label class="form-label">Numero de factura</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="number" id="pdet_cantidad" class="form-control editableDet">
-                                            <label class="form-label">Cantidad</label>
+                                            <input type="datetime" id="comp_fecha" class="form-control editableDet">
+                                            <label class="form-label">Fecha de la compra</label>
                                         </div>
                                     </div>
                                 </div>

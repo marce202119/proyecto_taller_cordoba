@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Compras | Compras</title>
+    <title>Compras | Nota de credito/debito</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -29,7 +29,7 @@ session_start();
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Formulario de compras</h2>
+                            <h2>Formulario de notas de credito y debito</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion" value="1">
@@ -37,7 +37,7 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="comp_nro_factura" value="" class="form-control" disabled>
+                                            <input type="text" id="n_comp_nro" value="" class="form-control" disabled>
                                             <label class="form-label">Código</label>
                                         </div>
                                     </div>

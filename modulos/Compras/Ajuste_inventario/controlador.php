@@ -8,10 +8,10 @@ if(isset($_POST['operacion'])){
 
     $sql = "select * from sp_ajuste_cab(
         {$_POST['ajus_nro']},
-        {$_POST['sucu_cod']},
         {$_POST['funcio_cod']},
         '{$_POST['ajus_fecha']}',
         '{$_POST['ajus_estado']}',
+        {$_POST['id_sucursal']},
         {$_POST['operacion']}
     ) as ultcod;";
 
@@ -36,7 +36,7 @@ if(isset($_POST['operacion'])){
         );
     }
 } else {
-    $sql = "select * from ajuste_cab ";
+    $sql = "select * from ajuste_cab as ajc ";
     $resultado = pg_query($conexion, $sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);

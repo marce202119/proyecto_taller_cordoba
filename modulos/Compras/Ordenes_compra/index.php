@@ -1,7 +1,10 @@
 
 <?php
-session_start();
+session_start()
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +12,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Ventas | Ventas</title>
+    <title>Compras | Ordenes de compra</title>
     <?php include "{$_SERVER['DOCUMENT_ROOT']}/taller/importCSS.php"; ?>
     <style>
         .list-group-item:hover {
@@ -50,16 +53,15 @@ session_start();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="id_sucursal" value="<?php echo $u['id_sucursal'] ?>" class="form-control" disabled>
-                                            <input type="text" id="Sucursal" value="<?php echo $u['sucu_nombre'] ?> 
+                                            <input type="text" id="id_sucursal" class="form-control" disabled>
                                             <label class="form-label">Sucursal</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                         <input type="text" id="orden_comp_estado" value="" class="form-control" disabled>
@@ -96,7 +98,7 @@ session_start();
                     <div class="card">
 
                         <div class="header">
-                            <h2>Detalles de la compra</h2>
+                            <h2>Detalles de la orden de compra</h2>
                         </div>
                         <div class="body">
                             <input type="hidden" id="operacion_det" value="1">
@@ -104,11 +106,11 @@ session_start();
                                 <div class="col-md-5">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="hidden" id="items_cod" value="0">
-                                            <input type="text" id="items_desc" class="form-control editableDet" onclick="getProducto()">
+                                            <input type="hidden" id="items_nro" value="0">
+                                            <input type="text" id="items_desc" class="form-control editableDet" onclick="getProveedor()">
                                             <label class="form-label">Producto</label>
-                                            <div id="listaProductos" style="display: none;">
-                                                <ul class="list-group" id="ulProductos"></ul>
+                                            <div id="listaProveedor" style="display: none;">
+                                                <ul class="list-group" id="ulProveedor"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +118,7 @@ session_start();
                                 <div class="col-md-2">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="items_precio" class="form-control editableDet">
+                                            <input type="text" id="oc_precio" class="form-control editableDet">
                                             <label class="form-label">Precio</label>
                                         </div>
                                     </div>
@@ -124,7 +126,7 @@ session_start();
                                 <div class="col-md-3">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="number" id="pdet_cantidad" class="form-control editableDet">
+                                            <input type="number" id="oc_cantidad" class="form-control editableDet">
                                             <label class="form-label">Cantidad</label>
                                         </div>
                                     </div>
@@ -171,6 +173,7 @@ session_start();
                                         <tr>
                                             <th>Código</th>
                                             <th>Fecha</th>
+                                            <th>sucursal</th>
                                             <th>Estado</th>
                                         </tr>
                                     </thead>

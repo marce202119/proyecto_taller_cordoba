@@ -1,34 +1,34 @@
 listar();
 formatoFecha();
 
-function getfuncionarios(){
+function getlistaProdructos(){
     $.ajax({
         method: "POST",
-        url: "listafuncionarios.php",
+        url: "listaProductos.php",
         data:{
-            funcionarios:$("#funcionarios").val()
+            Productos:$("#Productos").val()
         }
 
     }).done(function(lista){
         
         var fila = "";
         $.each(lista, function(i, item){
-            fila += "<li class='list-group-item' onclick='seleccionfuncionarios("+JSON.stringify(item)+")'>"+item.funcionarios+"</li>";
+            fila += "<li class='list-group-item' onclick='seleccionProductos("+JSON.stringify(item)+")'>"+item.Productos+"</li>";
         });
 
-        $("#ulfuncionarios").html(fila);
-        $("#listafuncionarios").attr("style", "display:block; position:absolute; z-index:3000;");
+        $("#ulProductos").html(fila);
+        $("#listaProductos").attr("style", "display:block; position:absolute; z-index:3000;");
     }).fail(function(a,b,c){
         swal("ERROR", c, "error");
     })
 }
 
-function seleccionfuncionarios(datos){
+function seleccionlistaProductos(datos){
     Object.keys(datos).forEach(key => {
         $("#"+key).val(datos[key]);
     });
-    $("#ulfuncionarios").html("");
-    $("#listafuncionarios").attr("style", "display:none;");
+    $("#ulProductos").html("");
+    $("#listaProductos").attr("style", "display:none;");
     $(".form-line").attr("class","form-line focused");
 }
 
@@ -46,12 +46,12 @@ function getSucursal() {
         method: "POST",
         url: "listaSucursal.php",
         data: {
-            sucu_desc: $("#sucu_desc").val()
+            sucu_nombre: $("#sucu_nombre").val()
         }
     }).done(function(lista) {
         var fila = "";
         $.each(lista, function(i, item) {
-            fila += "<li class='list-group-item' onclick='seleccionSucursal(" + JSON.stringify(item) + ")'>" + item.sucu_desc + "</li>";
+            fila += "<li class='list-group-item' onclick='seleccionSucursal(" + JSON.stringify(item) + ")'>" + item.sucu_nombre + "</li>";
         });
         $("#ulSucursal").html(fila);
         $("#listaSucursal").attr("style", "display:block; position:absolute; z-index:3000;");
@@ -62,7 +62,7 @@ function getSucursal() {
 
 function agregar(){
     $("#operacion").val(1);
-    $("#ventas_nro").val(0);
+    $("#orden_comp_nro").val(0);
     $(".editables").removeAttr("disabled");
     habilitarBotones(false);
     $(".form-line").attr("class","form-line focused");
@@ -147,11 +147,10 @@ function grabar(){
         method:"POST",
         url:"controlador.php",
         data:{
-            ajus_nro:$("#ajus_nro").val(),
+            pedido_nro:$("#pedido_nro").val(),
+            pedido_fecha:$("#pedido_fecha").val(),
             id_sucursal:$("#id_sucursal").val(),
-            funcio_cod:$("#funcio_cod").val(),
-            ajus_fecha:$("#ajus_fecha").val(),
-            ajus_estado:$("#ajus_estado").val(),
+            pedido_estado:$("#pedido_estado").val(),
             operacion:$("#operacion").val()
         }
     }).done(function(respuesta){
@@ -163,7 +162,7 @@ function grabar(){
         },
         function(){
             if(respuesta.tipo=="success"){
-                $("#ventas_nro").val(respuesta.ultcod)
+                $("#pedido_nro").val(respuesta.ultcod)
             }
         });
     }).fail(function(a,b,c){
@@ -172,14 +171,16 @@ function grabar(){
 }
 
 function agregarDetalle(operacion){
+    alert 
+
     $.ajax({
         method:"POST",
         url:"controladorDetalles.php",
         data:{
-            ajus_nro:$("#ajus_nro").val(),
-            ajus_motivo:$("#ajus_motivo").val(),
-            ajus_det_cantidad:$("#ajus_det_cantidad").val(),
-            ajus_det_precio:$("#ajus_det_precio").val(),
+            pedido_nro:$("#pedido_nro").val(),
+            pdet_cantidad:$("#pdet_cantidad").val(),
+            pdet_precio:$("#pdet_precio").val(),
+            id_funcionarios:$("#funcio_cod").val(),
             operacion_det:operacion
         }
     }).done(function(respuesta){
@@ -210,19 +211,16 @@ function listar(){
         for(rs of resultado){
             lineas += "<tr onclick='seleccion("+JSON.stringify(rs)+")'>"
                 lineas += "<td>";
-                    lineas += rs.ajus_nro;
+                    lineas += rs.pedido_nro;
+                lineas += "</td>";
+                lineas += "<td>";
+                    lineas += rs.pedido_fecha;
                 lineas += "</td>";
                 lineas += "<td>";
                     lineas += rs.id_sucursal;
                 lineas += "</td>";
                 lineas += "<td>";
-                    lineas += rs.funcio_cod;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rs.ajus_fecha;
-                lineas += "</td>";
-                lineas += "<td>";
-                    lineas += rs.ajus_estado;
+                    lineas += rs.pedido_estado;
                 lineas += "</td>";
             lineas += "</tr>"
         }

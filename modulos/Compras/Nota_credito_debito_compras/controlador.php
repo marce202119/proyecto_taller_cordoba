@@ -6,16 +6,18 @@ $conexion = $objConexion->getConexion();
 
 if(isset($_POST['operacion'])){
 
-    $sql = "select * from sp_compra_cab(
+    $sql = "select * from sp_nota_comp_cab(
+        {$_POST['n_comp_nro']},
         {$_POST['comp_nro_factura']},
-        '{$_POST['comp_fecha']}',
-        {$_POST['comp_cuota ']},
-        {$_POST['comp_plazo']},
-        '{$_POST['comp_inter_fcha_cuot_venci']}',
-        '{$_POST['comp_estado']}',
-        {$_POST['sucu_cod']},
-        {$_POST['tip_fac_cod']},
-        {$_POST['timb_cod']},
+        '{$_POST['n_comp_fecha ']}',
+        '{$_POST['n_comp_estado']}',
+        {$_POST['funcio_cod']},
+        {$_POST['id_sucursal']},
+        '{$_POST['nota_comp_vig_hasta']}',
+        {$_POST['nota_comp_timb_nro']},
+        {$_POST['nota_comp_fact_nro']},
+        {$_POST['nota_comp_monto']},
+        '{$_POST['nota_comp_motivo']}',
         {$_POST['operacion']}
     ) as ultcod;";
 
@@ -40,7 +42,7 @@ if(isset($_POST['operacion'])){
         );
     }
 } else {
-    $sql = "select * from compra_cab as cc ";
+    $sql = "select * from nota_comp_cab as ncc ";
     $resultado = pg_query($conexion, $sql);
     $datos = pg_fetch_all($resultado);
     echo json_encode($datos);
